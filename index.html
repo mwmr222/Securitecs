@@ -1,29 +1,80 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SecuriTecs | Security Technology</title>
+<title>SecuriTecs</title>
 
 <style>
-:root{
-  --primary:#2f7ea1; /* أزرق من اللوغو */
-  --primary-dark:#1f5f7a;
-  --gray:#6b7280;
-  --bg:#f5f7fa;
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f5f7fa;
 }
-body{margin:0;font-family:Tahoma;background:var(--bg);} 
-header{background:white;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,0.05);} 
-.logo{display:flex;align-items:center;gap:10px;}
-.logo img{height:70px;}
-.hero{background:url('hero.jpg') center/cover no-repeat;color:white;padding:100px 30px;text-align:center;}
-.hero h1{font-size:40px;margin-bottom:20px;}
-.section{padding:60px 30px;max-width:1100px;margin:auto;}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.card{background:white;padding:20px;border-radius:10px;box-shadow:0 5px 15px rgba(0,0,0,0.05);} 
-.card img{width:100%;border-radius:8px;margin-bottom:10px;}
-footer{background:#111;color:#aaa;text-align:center;padding:20px;margin-top:40px;}
-button{background:var(--primary);color:white;border:none;padding:10px 15px;border-radius:6px;cursor:pointer;}
+
+/* HEADER */
+header {
+  background: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo img {
+  height: 55px;
+}
+
+/* HERO */
+.hero {
+  background: url('hero.jpg') center/cover no-repeat;
+  color: white;
+  padding: 100px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+/* SECTION */
+.section {
+  padding: 60px 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-bottom: 30px;
+}
 </style>
 </head>
 
@@ -33,65 +84,37 @@ button{background:var(--primary);color:white;border:none;padding:10px 15px;borde
   <div class="logo">
     <img src="logo.png" alt="logo">
   </div>
-
-  <div>
-    <button onclick="setLang('ar')">AR</button>
-    <button onclick="setLang('en')">EN</button>
-  </div>
 </header>
 
 <section class="hero">
-  <h1 class="ar">حلول أمنية متقدمة</h1>
-  <h1 class="en" style="display:none;">Advanced Security Solutions</h1>
+  <h1>Advanced Security Solutions</h1>
 </section>
 
 <section class="section">
-  <h2 class="ar">خدماتنا</h2>
-  <h2 class="en" style="display:none;">Our Services</h2>
+  <h2>Our Services</h2>
 
   <div class="grid">
+
+    <!-- Payment Technologies (FIXED IMAGE) -->
     <div class="card">
-      <img src="service1.jpg">
-      <p class="ar">أمن الأنظمة</p>
-      <p class="en" style="display:none;">System Security</p>
+      <img src="service3.jpg" alt="Payment">
+      <p>Payment Technologies</p>
     </div>
 
+    <!-- Cards -->
     <div class="card">
-      <img src="service2.jpg">
-      <p class="ar">مكافحة التزوير</p>
-      <p class="en" style="display:none;">Anti-Forgery</p>
+      <img src="product2.jpg" alt="Cards">
+      <p>Card Solutions</p>
     </div>
 
+    <!-- Security -->
     <div class="card">
-      <img src="service3.jpg">
-      <p class="ar">تقنيات الدفع</p>
-      <p class="en" style="display:none;">Payment Technologies</p>
+      <img src="product1.jpg" alt="Security">
+      <p>System Security</p>
     </div>
+
   </div>
 </section>
-
-<section class="section">
-  <h2 class="ar">منتجاتنا</h2>
-  <h2 class="en" style="display:none;">Our Products</h2>
-
-  <div class="grid">
-    <div class="card"><img src="product1.jpg"></div>
-    <div class="card"><img src="product2.jpg"></div>
-    <div class="card"><img src="product3.jpg"></div>
-  </div>
-</section>
-
-<footer>
-© SecuriTecs 2026
-</footer>
-
-<script>
-function setLang(lang){
-  document.querySelectorAll('.ar').forEach(el=>el.style.display = lang==='ar'?'block':'none');
-  document.querySelectorAll('.en').forEach(el=>el.style.display = lang==='en'?'block':'none');
-  document.body.dir = lang==='ar'?'rtl':'ltr';
-}
-</script>
 
 </body>
 </html>
