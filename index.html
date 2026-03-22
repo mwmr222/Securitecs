@@ -1,166 +1,622 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SecuriTecs</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecuriTecs | Advanced Security Solutions</title>
+  <style>
+    :root {
+      --primary: #2f7ea1;
+      --primary-dark: #1f5f7a;
+      --accent: #0f4c81;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f5f7fa;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --radius: 16px;
+    }
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial;
-  background: #f5f7fa;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* HEADER */
-header {
-  background: white;
-  padding: 10px 30px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-.logo img {
-  height: 110px;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-/* HERO */
-.hero {
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-              url('hero.jpg') center/cover no-repeat;
-  color: white;
-  padding: 220px 20px 100px;
-  text-align: center;
-}
+    body.ar {
+      direction: rtl;
+      font-family: Tahoma, Arial, sans-serif;
+    }
 
-.hero h1 {
-  font-size: 45px;
-  margin-bottom: 20px;
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.hero p {
-  max-width: 700px;
-  margin: auto;
-  font-size: 18px;
-}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-/* SECTION */
-.section {
-  padding: 60px 30px;
-  max-width: 1200px;
-  margin: auto;
-}
+    header {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      padding: 10px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-/* GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-}
+    .logo img {
+      height: 110px;
+    }
 
-/* CARD */
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-  text-align: center;
-}
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
 
-.card img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
+    nav {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-h2 {
-  margin-bottom: 30px;
-}
-</style>
+    nav a {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-switch button {
+      border: none;
+      background: var(--primary);
+      color: white;
+      padding: 9px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .lang-switch button:hover {
+      background: var(--primary-dark);
+    }
+
+    .hero {
+      background:
+        linear-gradient(rgba(13, 34, 58, 0.52), rgba(13, 34, 58, 0.52)),
+        url('hero.jpg') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 260px 20px 110px;
+    }
+
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 62px);
+      margin: 0 0 20px;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    .hero .cta {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.25s ease;
+    }
+
+    .hero .cta:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .section {
+      max-width: 1240px;
+      margin: auto;
+      padding: 70px 30px;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 35px;
+    }
+
+    .section-head h2 {
+      color: var(--accent);
+      font-size: 38px;
+      margin: 0 0 12px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .about-box,
+    .contact-box,
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .about-box {
+      padding: 34px;
+      line-height: 1.9;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .card {
+      padding: 18px;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.10);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      margin: 8px 0 10px;
+      color: var(--accent);
+      font-size: 24px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .contact-box {
+      padding: 34px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-item {
+      font-size: 17px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-item strong {
+      color: var(--text);
+      margin-right: 6px;
+    }
+
+    footer {
+      background: #111827;
+      color: #cbd5e1;
+      text-align: center;
+      padding: 28px 20px;
+      margin-top: 30px;
+    }
+
+    .lang-ar {
+      display: none;
+    }
+
+    body.en .lang-en {
+      display: block !important;
+    }
+
+    body.en .lang-ar {
+      display: none !important;
+    }
+
+    body.ar .lang-en {
+      display: none !important;
+    }
+
+    body.ar .lang-ar {
+      display: block !important;
+    }
+
+    body.en .inline-en,
+    body.ar .inline-ar {
+      display: inline !important;
+    }
+
+    body.en .inline-ar,
+    body.ar .inline-en {
+      display: none !important;
+    }
+
+    @media (max-width: 1024px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header {
+        flex-direction: column;
+      }
+
+      .nav-wrap {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 180px 18px 90px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .logo img {
+        height: 85px;
+      }
+
+      .section {
+        padding: 55px 18px;
+      }
+
+      .section-head h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
 </head>
-
-<body>
-
-<header>
-  <div class="logo">
-    <img src="logo.png">
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <h1>Advanced Security Technology Solutions</h1>
-  <p>
-    SecuriTecs delivers specialized security solutions for banking, financial 
-    and commercial sectors, focusing on system protection, anti-forgery, 
-    payment technologies, and information security.
-  </p>
-</section>
-
-<!-- SERVICES -->
-<section class="section">
-  <h2>Our Services</h2>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="service3.jpg">
-      <h3>Payment Technologies</h3>
-      <p>Secure payment solutions including smart card systems.</p>
+<body class="en">
+  <header>
+    <div class="logo">
+      <a href="#home">
+        <img src="logo.png" alt="SecuriTecs Logo" />
+      </a>
     </div>
 
-    <div class="card">
-      <img src="product1.jpg">
-      <h3>Anti-Forgery & Verification</h3>
-      <p>Advanced document protection and authentication systems.</p>
+    <div class="nav-wrap">
+      <nav>
+        <a href="#home">
+          <span class="inline-en">Home</span>
+          <span class="inline-ar">الرئيسية</span>
+        </a>
+        <a href="#about">
+          <span class="inline-en">About</span>
+          <span class="inline-ar">من نحن</span>
+        </a>
+        <a href="#services">
+          <span class="inline-en">Services</span>
+          <span class="inline-ar">الخدمات</span>
+        </a>
+        <a href="#products">
+          <span class="inline-en">Products</span>
+          <span class="inline-ar">Products</span>
+        </a>
+        <a href="#contact">
+          <span class="inline-en">Contact</span>
+          <span class="inline-ar">تواصل</span>
+        </a>
+      </nav>
+
+      <div class="lang-switch">
+        <button onclick="setLanguage('en')">EN</button>
+        <button onclick="setLanguage('ar')">AR</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <h1 class="lang-en">Advanced Security Technology Solutions</h1>
+    <h1 class="lang-ar">حلول متقدمة في تقنيات الأمن والحماية</h1>
+
+    <p class="lang-en">
+      SecuriTecs delivers specialized security solutions for banking, financial,
+      and commercial sectors, with a focus on system protection, anti-forgery,
+      payment technologies, and information security.
+    </p>
+
+    <p class="lang-ar">
+      تقدم SecuriTecs حلولاً أمنية متخصصة للقطاعات المصرفية والمالية والتجارية،
+      مع تركيز على حماية الأنظمة، مكافحة التزوير، تقنيات الدفع، وأمن المعلومات.
+    </p>
+
+    <a class="cta" href="#services">
+      <span class="inline-en">Explore Our Services</span>
+      <span class="inline-ar">استكشف خدماتنا</span>
+    </a>
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-head">
+      <h2 class="lang-en">About SecuriTecs</h2>
+      <h2 class="lang-ar">من نحن</h2>
+
+      <p class="lang-en">
+        A security technology company delivering advanced, regulation-aware
+        solutions for organizations that require reliability, trust, and
+        protection across critical digital environments.
+      </p>
+
+      <p class="lang-ar">
+        شركة متخصصة في تقنيات الأمن تقدم حلولاً متقدمة ومتوافقة مع المتطلبات
+        التنظيمية للجهات التي تحتاج إلى الموثوقية والثقة والحماية في البيئات الرقمية الحساسة.
+      </p>
     </div>
 
-    <div class="card">
-      <img src="product2.jpg">
-      <h3>System Security</h3>
-      <p>Protection for digital infrastructure and critical systems.</p>
+    <div class="about-box">
+      <div class="lang-en">
+        SecuriTecs is focused on protecting digital infrastructure, securing
+        transactions, preventing forgery, and enabling trusted operational
+        environments across banking, financial, and commercial sectors. Our
+        approach combines technical depth, security-first thinking, and
+        practical implementation for high-sensitivity use cases.
+      </div>
+
+      <div class="lang-ar">
+        تركز SecuriTecs على حماية البنية الرقمية، وتأمين المعاملات، ومنع التزوير،
+        وتمكين بيئات تشغيل موثوقة في القطاعات المصرفية والمالية والتجارية. ويجمع
+        نهجنا بين العمق التقني، وفكر الأمن أولاً، والتنفيذ العملي في الاستخدامات عالية الحساسية.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="section-head">
+      <h2 class="lang-en">Our Services</h2>
+      <h2 class="lang-ar">خدماتنا</h2>
+
+      <p class="lang-en">
+        Specialized services tailored to protect systems, documents, payments,
+        and sensitive digital operations.
+      </p>
+
+      <p class="lang-ar">
+        خدمات متخصصة مصممة لحماية الأنظمة والوثائق والمدفوعات والعمليات الرقمية الحساسة.
+      </p>
     </div>
 
-  </div>
-</section>
+    <div class="grid">
+      <div class="card">
+        <img src="service3.jpg" alt="Payment Technologies" />
+        <h3 class="lang-en">Payment Technologies</h3>
+        <h3 class="lang-ar">تقنيات الدفع</h3>
 
-<!-- PRODUCTS (FIXED - DIFFERENT) -->
-<section class="section">
-  <h2>Our Products</h2>
+        <p class="lang-en">
+          Secure payment technology solutions including smart card workflows,
+          EMV-oriented environments, and protected transaction experiences.
+        </p>
 
-  <div class="grid">
+        <p class="lang-ar">
+          حلول آمنة لتقنيات الدفع تشمل بيئات البطاقات الذكية، وتطبيقات EMV،
+          وتجارب معاملات محمية وموثوقة.
+        </p>
+      </div>
 
-    <div class="card">
-      <img src="SECURITY-LABELS-800x800.jpg">
-      <h3>Security Labels</h3>
-      <p>Anti-counterfeit holographic labels and secure printing solutions.</p>
+      <div class="card">
+        <img src="product1.jpg" alt="Anti-Forgery & Verification" />
+        <h3 class="lang-en">Anti-Forgery & Verification</h3>
+        <h3 class="lang-ar">مكافحة التزوير والتحقق</h3>
+
+        <p class="lang-en">
+          Advanced document verification and anti-counterfeit systems designed
+          to preserve integrity and strengthen trust.
+        </p>
+
+        <p class="lang-ar">
+          أنظمة متقدمة للتحقق من الوثائق ومكافحة التقليد، مصممة للحفاظ على السلامة
+          وتعزيز الثقة والموثوقية.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="Cards.png" alt="System Security" />
+        <h3 class="lang-en">System Security</h3>
+        <h3 class="lang-ar">أمن الأنظمة</h3>
+
+        <p class="lang-en">
+          Protection for digital infrastructure, critical workflows, and
+          operational systems across high-security environments.
+        </p>
+
+        <p class="lang-ar">
+          حماية للبنية الرقمية وسير العمل الحرج والأنظمة التشغيلية ضمن البيئات
+          ذات المتطلبات الأمنية العالية.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="section-head">
+      <h2 class="lang-en">Our Products</h2>
+      <h2 class="lang-ar">منتجاتنا</h2>
+
+      <p class="lang-en">
+        Distinct product lines built for secure identification, protected
+        labeling, and trusted payment card environments.
+      </p>
+
+      <p class="lang-ar">
+        خطوط منتجات مختلفة مصممة للتعريف الآمن، والملصقات المحمية،
+        وبيئات بطاقات الدفع الموثوقة.
+      </p>
     </div>
 
-    <div class="card">
-      <img src="product1.jpg">
-      <h3>Secure Documents</h3>
-      <p>High-security documents and ID protection technologies.</p>
+    <div class="grid">
+      <div class="card">
+        <img src="SECURITY-LABELS-800x800.jpg" alt="Security Labels" />
+        <h3 class="lang-en">Security Labels</h3>
+        <h3 class="lang-ar">ملصقات أمنية</h3>
+
+        <p class="lang-en">
+          Anti-counterfeit holographic labels and secure printing materials for
+          packaging, documents, and protected applications.
+        </p>
+
+        <p class="lang-ar">
+          ملصقات هولوغرامية ومواد طباعة آمنة لمكافحة التقليد، مناسبة للتغليف
+          والوثائق والتطبيقات الحساسة.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="HOLOGRAPHIC-LABELS-1-800x800.jpg" alt="Secure Documents" />
+        <h3 class="lang-en">Secure Documents</h3>
+        <h3 class="lang-ar">وثائق آمنة</h3>
+
+        <p class="lang-en">
+          High-security document elements and visual protection techniques for
+          IDs, credentials, and official records.
+        </p>
+
+        <p class="lang-ar">
+          عناصر وثائق عالية الأمان وتقنيات حماية بصرية لبطاقات الهوية،
+          والاعتمادات، والسجلات الرسمية.
+        </p>
+      </div>
+
+      <div class="card">
+        <img src="product2.jpg" alt="Smart Cards" />
+        <h3 class="lang-en">Smart Cards</h3>
+        <h3 class="lang-ar">بطاقات ذكية</h3>
+
+        <p class="lang-en">
+          Advanced card technologies for banking, secure payments, and trusted
+          sector-specific transaction environments.
+        </p>
+
+        <p class="lang-ar">
+          تقنيات بطاقات متقدمة للقطاع المصرفي، والمدفوعات الآمنة،
+          وبيئات المعاملات الموثوقة المتخصصة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-head">
+      <h2 class="lang-en">Contact Us</h2>
+      <h2 class="lang-ar">تواصل معنا</h2>
+
+      <p class="lang-en">
+        Reach out to SecuriTecs for inquiries, partnerships, and security solution needs.
+      </p>
+
+      <p class="lang-ar">
+        تواصل مع SecuriTecs للاستفسارات، والشراكات، واحتياجات الحلول الأمنية.
+      </p>
     </div>
 
-    <div class="card">
-      <img src="product2.jpg">
-      <h3>Smart Cards</h3>
-      <p>Advanced card technologies for banking and secure payments.</p>
+    <div class="contact-box">
+      <div class="contact-list">
+        <div class="contact-item">
+          <strong class="inline-en">Mobile:</strong>
+          <strong class="inline-ar">الموبايل:</strong>
+          +963 936 977 977
+        </div>
+
+        <div class="contact-item">
+          <strong class="inline-en">Phone:</strong>
+          <strong class="inline-ar">الهاتف:</strong>
+          +963 11 373 09 75
+        </div>
+
+        <div class="contact-item">
+          <strong class="inline-en">Email:</strong>
+          <strong class="inline-ar">الإيميل:</strong>
+          info@securitecs.com
+        </div>
+
+        <div class="contact-item">
+          <strong class="inline-en">Location:</strong>
+          <strong class="inline-ar">الموقع:</strong>
+          <span class="inline-en">Damascus, Syria</span>
+          <span class="inline-ar">دمشق، سوريا</span>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <footer>
+    <span class="inline-en">© 2026 SecuriTecs. All Rights Reserved.</span>
+    <span class="inline-ar">© 2026 SecuriTecs. جميع الحقوق محفوظة.</span>
+  </footer>
 
-<!-- CONTACT -->
-<section class="section">
-  <h2>Contact Us</h2>
+  <script>
+    function setLanguage(lang) {
+      const body = document.body;
 
-  <p><strong>Mobile:</strong> +963 936 977 977</p>
-  <p><strong>Phone:</strong> +963 11 373 09 75</p>
-  <p><strong>Email:</strong> info@securitecs.com</p>
-  <p><strong>Location:</strong> Damascus, Syria</p>
-</section>
+      if (lang === 'ar') {
+        body.classList.remove('en');
+        body.classList.add('ar');
+        document.documentElement.lang = 'ar';
+        document.documentElement.dir = 'rtl';
+      } else {
+        body.classList.remove('ar');
+        body.classList.add('en');
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
+      }
 
+      localStorage.setItem('site-language', lang);
+    }
+
+    setLanguage(localStorage.getItem('site-language') || 'en');
+  </script>
 </body>
 </html>
