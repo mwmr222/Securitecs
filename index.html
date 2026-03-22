@@ -8,14 +8,13 @@
     :root {
       --primary: #2f7ea1;
       --primary-dark: #1f5f7a;
-      --accent: #0f4c81;
       --text: #1f2937;
       --muted: #6b7280;
-      --bg: #f5f7fa;
+      --bg: #f3f5f8;
       --white: #ffffff;
       --border: #e5e7eb;
       --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --radius: 16px;
+      --radius: 18px;
     }
 
     * {
@@ -49,12 +48,11 @@
     }
 
     header {
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(10px);
-      padding: 10px 30px;
+      background: rgba(255,255,255,0.97);
+      padding: 10px 28px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 20px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.05);
       position: sticky;
@@ -66,24 +64,24 @@
       height: 110px;
     }
 
-    .nav-wrap {
+    .header-right {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
     nav {
       display: flex;
-      gap: 20px;
+      gap: 18px;
       flex-wrap: wrap;
       align-items: center;
     }
 
     nav a {
-      font-weight: 600;
-      color: var(--text);
       font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
     }
 
     nav a:hover {
@@ -98,107 +96,85 @@
     .lang-switch button {
       border: none;
       background: var(--primary);
-      color: white;
+      color: #fff;
       padding: 9px 14px;
       border-radius: 8px;
-      cursor: pointer;
       font-weight: 700;
+      cursor: pointer;
     }
 
     .lang-switch button:hover {
       background: var(--primary-dark);
     }
 
-    .hero {
-      background:
-        linear-gradient(rgba(13, 34, 58, 0.52), rgba(13, 34, 58, 0.52)),
-        url('hero.jpg') center/cover no-repeat;
-      color: white;
-      text-align: center;
-      padding: 260px 20px 110px;
-    }
-
-    .hero h1 {
-      font-size: clamp(34px, 5vw, 62px);
-      margin: 0 0 20px;
-      line-height: 1.2;
-    }
-
-    .hero p {
-      max-width: 900px;
-      margin: 0 auto 30px;
-      font-size: 20px;
-      line-height: 1.8;
-    }
-
-    .hero .cta {
-      display: inline-block;
-      background: var(--primary);
-      color: white;
-      padding: 14px 24px;
-      border-radius: 10px;
-      font-weight: 700;
-      transition: 0.25s ease;
-    }
-
-    .hero .cta:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
+    /* Banner only, no overlay text */
+    .hero-banner {
+      width: 100%;
+      height: 560px;
+      background: url('hero.jpg') center/cover no-repeat;
     }
 
     .section {
       max-width: 1240px;
       margin: auto;
-      padding: 70px 30px;
+      padding: 70px 28px;
     }
 
     .section-head {
       text-align: center;
-      max-width: 820px;
+      max-width: 860px;
       margin: 0 auto 35px;
     }
 
     .section-head h2 {
-      color: var(--accent);
-      font-size: 38px;
       margin: 0 0 12px;
+      font-size: 42px;
+      color: var(--primary-dark);
     }
 
     .section-head p {
+      margin: 0;
       color: var(--muted);
       line-height: 1.8;
-      margin: 0;
+      font-size: 17px;
     }
 
     .about-box,
     .contact-box,
     .card {
       background: var(--white);
+      border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
     }
 
-    .about-box {
+    .about-box,
+    .contact-box {
       padding: 34px;
-      line-height: 1.9;
+    }
+
+    .about-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.95;
+      font-size: 17px;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 26px;
+      gap: 24px;
     }
 
     .card {
-      padding: 18px;
+      padding: 16px;
       text-align: center;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 14px 28px rgba(0,0,0,0.10);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.1);
     }
 
     .card img {
@@ -206,13 +182,14 @@
       height: 220px;
       object-fit: cover;
       border-radius: 12px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      background: #eef2f7;
     }
 
     .card h3 {
-      margin: 8px 0 10px;
-      color: var(--accent);
-      font-size: 24px;
+      margin: 0 0 10px;
+      color: var(--primary-dark);
+      font-size: 22px;
     }
 
     .card p {
@@ -222,19 +199,15 @@
       font-size: 16px;
     }
 
-    .contact-box {
-      padding: 34px;
-    }
-
     .contact-list {
       display: grid;
       gap: 12px;
     }
 
     .contact-item {
-      font-size: 17px;
       color: var(--muted);
       line-height: 1.8;
+      font-size: 17px;
     }
 
     .contact-item strong {
@@ -244,9 +217,9 @@
 
     footer {
       background: #111827;
-      color: #cbd5e1;
+      color: #d1d5db;
       text-align: center;
-      padding: 28px 20px;
+      padding: 26px 18px;
       margin-top: 30px;
     }
 
@@ -289,8 +262,12 @@
         flex-direction: column;
       }
 
-      .nav-wrap {
+      .header-right {
         justify-content: center;
+      }
+
+      .hero-banner {
+        height: 420px;
       }
     }
 
@@ -299,29 +276,26 @@
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding: 180px 18px 90px;
-      }
-
-      .hero p {
-        font-size: 17px;
-      }
-
       .logo img {
         height: 85px;
       }
 
+      .hero-banner {
+        height: 280px;
+      }
+
       .section {
-        padding: 55px 18px;
+        padding: 50px 18px;
       }
 
       .section-head h2 {
-        font-size: 30px;
+        font-size: 32px;
       }
     }
   </style>
 </head>
 <body class="en">
+
   <header>
     <div class="logo">
       <a href="#home">
@@ -329,7 +303,7 @@
       </a>
     </div>
 
-    <div class="nav-wrap">
+    <div class="header-right">
       <nav>
         <a href="#home">
           <span class="inline-en">Home</span>
@@ -345,7 +319,7 @@
         </a>
         <a href="#products">
           <span class="inline-en">Products</span>
-          <span class="inline-ar">Products</span>
+          <span class="inline-ar">المنتجات</span>
         </a>
         <a href="#contact">
           <span class="inline-en">Contact</span>
@@ -360,26 +334,7 @@
     </div>
   </header>
 
-  <section class="hero" id="home">
-    <h1 class="lang-en">Advanced Security Technology Solutions</h1>
-    <h1 class="lang-ar">حلول متقدمة في تقنيات الأمن والحماية</h1>
-
-    <p class="lang-en">
-      SecuriTecs delivers specialized security solutions for banking, financial,
-      and commercial sectors, with a focus on system protection, anti-forgery,
-      payment technologies, and information security.
-    </p>
-
-    <p class="lang-ar">
-      تقدم SecuriTecs حلولاً أمنية متخصصة للقطاعات المصرفية والمالية والتجارية،
-      مع تركيز على حماية الأنظمة، مكافحة التزوير، تقنيات الدفع، وأمن المعلومات.
-    </p>
-
-    <a class="cta" href="#services">
-      <span class="inline-en">Explore Our Services</span>
-      <span class="inline-ar">استكشف خدماتنا</span>
-    </a>
-  </section>
+  <section class="hero-banner" id="home"></section>
 
   <section class="section" id="about">
     <div class="section-head">
@@ -387,31 +342,30 @@
       <h2 class="lang-ar">من نحن</h2>
 
       <p class="lang-en">
-        A security technology company delivering advanced, regulation-aware
-        solutions for organizations that require reliability, trust, and
-        protection across critical digital environments.
+        SecuriTecs provides advanced security technology solutions for banking,
+        financial, and commercial sectors, with a focus on protection,
+        compliance, and trust across critical digital environments.
       </p>
 
       <p class="lang-ar">
-        شركة متخصصة في تقنيات الأمن تقدم حلولاً متقدمة ومتوافقة مع المتطلبات
-        التنظيمية للجهات التي تحتاج إلى الموثوقية والثقة والحماية في البيئات الرقمية الحساسة.
+        تقدم SecuriTecs حلولًا متقدمة في تقنيات الأمن للقطاعات المصرفية والمالية
+        والتجارية، مع تركيز على الحماية والامتثال والثقة في البيئات الرقمية الحساسة.
       </p>
     </div>
 
     <div class="about-box">
-      <div class="lang-en">
-        SecuriTecs is focused on protecting digital infrastructure, securing
-        transactions, preventing forgery, and enabling trusted operational
-        environments across banking, financial, and commercial sectors. Our
-        approach combines technical depth, security-first thinking, and
-        practical implementation for high-sensitivity use cases.
-      </div>
+      <p class="lang-en">
+        Our expertise includes system security, anti-forgery solutions, payment
+        technologies, secure labels, smart cards, and protected document
+        environments. We help organizations strengthen trust, improve protection,
+        and support secure digital operations.
+      </p>
 
-      <div class="lang-ar">
-        تركز SecuriTecs على حماية البنية الرقمية، وتأمين المعاملات، ومنع التزوير،
-        وتمكين بيئات تشغيل موثوقة في القطاعات المصرفية والمالية والتجارية. ويجمع
-        نهجنا بين العمق التقني، وفكر الأمن أولاً، والتنفيذ العملي في الاستخدامات عالية الحساسية.
-      </div>
+      <p class="lang-ar">
+        تشمل خبراتنا أمن الأنظمة، وحلول مكافحة التزوير، وتقنيات الدفع،
+        والملصقات الأمنية، والبطاقات الذكية، وبيئات الوثائق المحمية. نحن نساعد
+        المؤسسات على تعزيز الثقة ورفع مستوى الحماية ودعم العمليات الرقمية الآمنة.
+      </p>
     </div>
   </section>
 
@@ -421,12 +375,12 @@
       <h2 class="lang-ar">خدماتنا</h2>
 
       <p class="lang-en">
-        Specialized services tailored to protect systems, documents, payments,
-        and sensitive digital operations.
+        Specialized services tailored to protect systems, payments, documents,
+        and operational environments.
       </p>
 
       <p class="lang-ar">
-        خدمات متخصصة مصممة لحماية الأنظمة والوثائق والمدفوعات والعمليات الرقمية الحساسة.
+        خدمات متخصصة مصممة لحماية الأنظمة والمدفوعات والوثائق وبيئات التشغيل.
       </p>
     </div>
 
@@ -437,13 +391,13 @@
         <h3 class="lang-ar">تقنيات الدفع</h3>
 
         <p class="lang-en">
-          Secure payment technology solutions including smart card workflows,
-          EMV-oriented environments, and protected transaction experiences.
+          Secure payment solutions including smart card workflows,
+          EMV-oriented environments, and protected transaction processes.
         </p>
 
         <p class="lang-ar">
-          حلول آمنة لتقنيات الدفع تشمل بيئات البطاقات الذكية، وتطبيقات EMV،
-          وتجارب معاملات محمية وموثوقة.
+          حلول دفع آمنة تشمل بيئات البطاقات الذكية وتطبيقات EMV
+          وعمليات معاملات محمية.
         </p>
       </div>
 
@@ -453,12 +407,12 @@
         <h3 class="lang-ar">مكافحة التزوير والتحقق</h3>
 
         <p class="lang-en">
-          Advanced document verification and anti-counterfeit systems designed
+          Advanced verification and anti-counterfeit solutions designed
           to preserve integrity and strengthen trust.
         </p>
 
         <p class="lang-ar">
-          أنظمة متقدمة للتحقق من الوثائق ومكافحة التقليد، مصممة للحفاظ على السلامة
+          حلول متقدمة للتحقق ومكافحة التقليد، مصممة للحفاظ على السلامة
           وتعزيز الثقة والموثوقية.
         </p>
       </div>
@@ -469,13 +423,13 @@
         <h3 class="lang-ar">أمن الأنظمة</h3>
 
         <p class="lang-en">
-          Protection for digital infrastructure, critical workflows, and
-          operational systems across high-security environments.
+          Protection for digital infrastructure, critical workflows,
+          and operational systems across high-security environments.
         </p>
 
         <p class="lang-ar">
-          حماية للبنية الرقمية وسير العمل الحرج والأنظمة التشغيلية ضمن البيئات
-          ذات المتطلبات الأمنية العالية.
+          حماية للبنية الرقمية وسير العمل الحرج والأنظمة التشغيلية
+          ضمن البيئات ذات المتطلبات الأمنية العالية.
         </p>
       </div>
     </div>
@@ -487,12 +441,12 @@
       <h2 class="lang-ar">منتجاتنا</h2>
 
       <p class="lang-en">
-        Distinct product lines built for secure identification, protected
-        labeling, and trusted payment card environments.
+        Distinct product lines built for secure identification,
+        protected labeling, and trusted payment card environments.
       </p>
 
       <p class="lang-ar">
-        خطوط منتجات مختلفة مصممة للتعريف الآمن، والملصقات المحمية،
+        خطوط منتجات مختلفة للتعريف الآمن، والملصقات المحمية،
         وبيئات بطاقات الدفع الموثوقة.
       </p>
     </div>
@@ -504,13 +458,13 @@
         <h3 class="lang-ar">ملصقات أمنية</h3>
 
         <p class="lang-en">
-          Anti-counterfeit holographic labels and secure printing materials for
-          packaging, documents, and protected applications.
+          Anti-counterfeit holographic labels and secure printing solutions
+          for protected applications.
         </p>
 
         <p class="lang-ar">
-          ملصقات هولوغرامية ومواد طباعة آمنة لمكافحة التقليد، مناسبة للتغليف
-          والوثائق والتطبيقات الحساسة.
+          ملصقات هولوغرامية وحلول طباعة آمنة لمكافحة التقليد
+          للتطبيقات الحساسة.
         </p>
       </div>
 
@@ -520,13 +474,13 @@
         <h3 class="lang-ar">وثائق آمنة</h3>
 
         <p class="lang-en">
-          High-security document elements and visual protection techniques for
-          IDs, credentials, and official records.
+          High-security document elements and visual protection techniques
+          for IDs, credentials, and official records.
         </p>
 
         <p class="lang-ar">
-          عناصر وثائق عالية الأمان وتقنيات حماية بصرية لبطاقات الهوية،
-          والاعتمادات، والسجلات الرسمية.
+          عناصر وثائق عالية الأمان وتقنيات حماية بصرية لبطاقات الهوية
+          والاعتمادات والسجلات الرسمية.
         </p>
       </div>
 
@@ -536,13 +490,13 @@
         <h3 class="lang-ar">بطاقات ذكية</h3>
 
         <p class="lang-en">
-          Advanced card technologies for banking, secure payments, and trusted
-          sector-specific transaction environments.
+          Advanced card technologies for banking, secure payments,
+          and trusted transaction environments.
         </p>
 
         <p class="lang-ar">
-          تقنيات بطاقات متقدمة للقطاع المصرفي، والمدفوعات الآمنة،
-          وبيئات المعاملات الموثوقة المتخصصة.
+          تقنيات بطاقات متقدمة للقطاع المصرفي والمدفوعات الآمنة
+          وبيئات المعاملات الموثوقة.
         </p>
       </div>
     </div>
@@ -554,11 +508,11 @@
       <h2 class="lang-ar">تواصل معنا</h2>
 
       <p class="lang-en">
-        Reach out to SecuriTecs for inquiries, partnerships, and security solution needs.
+        Reach out to SecuriTecs for inquiries, cooperation, and security solution needs.
       </p>
 
       <p class="lang-ar">
-        تواصل مع SecuriTecs للاستفسارات، والشراكات، واحتياجات الحلول الأمنية.
+        تواصل مع SecuriTecs للاستفسارات والتعاون واحتياجات الحلول الأمنية.
       </p>
     </div>
 
