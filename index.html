@@ -1,292 +1,728 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>SecuriTecs | Advanced Security Solutions</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SecuriTecs | Advanced Security Solutions</title>
 
-<style>
-:root {
-  --primary:#2f7ea1;
-  --primary-dark:#1f5f7a;
-  --text:#1f2937;
-  --muted:#6b7280;
-  --bg:#f3f5f8;
-  --white:#ffffff;
-  --border:#e5e7eb;
-  --shadow:0 8px 24px rgba(0,0,0,0.08);
-  --radius:18px;
-}
+  <style>
+    :root {
+      --primary: #2f7ea1;
+      --primary-dark: #1f5f7a;
+      --primary-light: #e8f3f8;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f3f5f8;
+      --white: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.14);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --transition: all 0.3s ease;
+    }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
+    * {
+      box-sizing: border-box;
+    }
 
-body{
-  margin:0;
-  font-family:Arial;
-  background:var(--bg);
-  color:var(--text);
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-body.ar{
-  direction:rtl;
-  font-family:Tahoma;
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-img{
-  max-width:100%;
-  display:block;
-  margin-left:auto;
-  margin-right:auto; /* CENTER ALL IMAGES */
-}
+    body.ar {
+      direction: rtl;
+      font-family: Tahoma, Arial, sans-serif;
+    }
 
-header{
-  background:#fff;
-  padding:10px 28px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  box-shadow:0 2px 12px rgba(0,0,0,0.05);
-  position:sticky;
-  top:0;
-  z-index:1000;
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-.logo img{
-  height:120px; /* UPDATED */
-}
+    img {
+      max-width: 100%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-nav{
-  display:flex;
-  gap:18px;
-}
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s ease forwards;
+    }
 
-nav a{
-  font-weight:700;
-}
+    .fade-delay-1 { animation-delay: 0.1s; }
+    .fade-delay-2 { animation-delay: 0.25s; }
+    .fade-delay-3 { animation-delay: 0.4s; }
+    .fade-delay-4 { animation-delay: 0.55s; }
 
-nav a:hover{
-  color:var(--primary);
-}
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.lang-switch button{
-  background:var(--primary);
-  color:#fff;
-  border:none;
-  padding:8px 12px;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:700;
-}
+    @keyframes softFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
 
-.hero-banner{
-  height:560px;
-  background:url('hero.jpg') center/cover no-repeat;
-}
+    header {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 10px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(229,231,235,0.9);
+    }
 
-/* NEW MIDDLE BANNER */
-.middle-banner{
-  width:100%;
-  height:300px;
-  background:url('banner.png') center/cover no-repeat;
-  margin:40px 0;
-}
+    .logo img {
+      height: 120px;
+      transition: transform 0.3s ease;
+    }
 
-.section{
-  max-width:1240px;
-  margin:auto;
-  padding:70px 28px;
-}
+    .logo img:hover {
+      transform: scale(1.03);
+    }
 
-.section-head{
-  text-align:center;
-  margin-bottom:30px;
-}
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
 
-.section-head h2{
-  color:var(--primary-dark);
-  font-size:38px;
-}
+    nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
 
-.section-head p{
-  color:var(--muted);
-}
+    nav a {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      position: relative;
+      padding: 6px 2px;
+      transition: var(--transition);
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+      border-radius: 10px;
+    }
 
-.card{
-  background:#fff;
-  padding:16px;
-  border-radius:var(--radius);
-  box-shadow:var(--shadow);
-  text-align:center;
-}
+    nav a:hover {
+      color: var(--primary);
+    }
 
-.card img{
-  height:220px;
-  object-fit:cover;
-  border-radius:12px;
-  margin-bottom:12px;
-}
+    nav a:hover::after {
+      width: 100%;
+    }
 
-footer{
-  background:#111827;
-  color:#d1d5db;
-  text-align:center;
-  padding:20px;
-}
+    .lang-switch {
+      display: flex;
+      gap: 8px;
+    }
 
-.lang-ar{display:none}
-body.ar .lang-en{display:none}
-body.ar .lang-ar{display:block}
+    .lang-switch button {
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 9px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 6px 16px rgba(47, 126, 161, 0.2);
+    }
 
-/* RESPONSIVE */
-@media(max-width:900px){
-  .grid{grid-template-columns:1fr 1fr}
-}
+    .lang-switch button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(47, 126, 161, 0.28);
+    }
 
-@media(max-width:600px){
-  .grid{grid-template-columns:1fr}
-  .hero-banner{height:300px}
-  .middle-banner{height:180px}
-}
-</style>
+    .hero-banner {
+      width: 100%;
+      height: 560px;
+      background:
+        linear-gradient(rgba(12, 24, 34, 0.18), rgba(12, 24, 34, 0.18)),
+        url('hero.jpg') center/cover no-repeat;
+      position: relative;
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 70%, rgba(243,245,248,0.85) 100%);
+      pointer-events: none;
+    }
+
+    .middle-banner {
+      text-align: center;
+      margin: 34px auto 8px;
+      max-width: 1240px;
+      padding: 0 28px;
+    }
+
+    .middle-banner img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: var(--shadow-hover);
+      border: 1px solid rgba(229,231,235,0.9);
+      background: #fff;
+      animation: softFloat 5s ease-in-out infinite;
+    }
+
+    .section {
+      max-width: 1240px;
+      margin: auto;
+      padding: 70px 28px;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 35px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: 42px;
+      color: var(--primary-dark);
+      letter-spacing: -0.5px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+    }
+
+    .about-box,
+    .contact-box,
+    .card {
+      background: rgba(255,255,255,0.94);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .about-box,
+    .contact-box {
+      padding: 34px;
+      transition: var(--transition);
+    }
+
+    .about-box:hover,
+    .contact-box:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .about-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.95;
+      font-size: 17px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      padding: 16px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      background: #eef2f7;
+      transition: transform 0.35s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.04);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--primary-dark);
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-item {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
+      border: 1px solid #edf2f7;
+    }
+
+    .contact-item strong {
+      color: var(--text);
+      margin-right: 6px;
+    }
+
+    body.ar .contact-item strong {
+      margin-right: 0;
+      margin-left: 6px;
+    }
+
+    footer {
+      background: linear-gradient(135deg, #0f172a, #111827);
+      color: #d1d5db;
+      text-align: center;
+      padding: 26px 18px;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .lang-ar {
+      display: none;
+    }
+
+    body.en .lang-en {
+      display: block !important;
+    }
+
+    body.en .lang-ar {
+      display: none !important;
+    }
+
+    body.ar .lang-en {
+      display: none !important;
+    }
+
+    body.ar .lang-ar {
+      display: block !important;
+    }
+
+    body.en .inline-en,
+    body.ar .inline-ar {
+      display: inline !important;
+    }
+
+    body.en .inline-ar,
+    body.ar .inline-en {
+      display: none !important;
+    }
+
+    @media (max-width: 1024px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header {
+        flex-direction: column;
+      }
+
+      .header-right {
+        justify-content: center;
+      }
+
+      .hero-banner {
+        height: 420px;
+      }
+
+      .section-head h2 {
+        font-size: 36px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo img {
+        height: 90px;
+      }
+
+      .hero-banner {
+        height: 280px;
+      }
+
+      .section {
+        padding: 50px 18px;
+      }
+
+      .middle-banner {
+        padding: 0 18px;
+      }
+
+      .section-head h2 {
+        font-size: 30px;
+      }
+
+      .card img {
+        height: 210px;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      header {
+        padding: 10px 18px;
+      }
+    }
+  </style>
 </head>
-
 <body class="en">
 
-<header>
-  <div class="logo">
-    <img src="logo.png" alt="SecuriTecs Logo">
-  </div>
-
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div class="lang-switch">
-    <button onclick="setLanguage('en')">EN</button>
-    <button onclick="setLanguage('ar')">AR</button>
-  </div>
-</header>
-
-<section class="hero-banner" id="home"></section>
-
-<!-- ABOUT -->
-<section class="section" id="about">
-  <div class="section-head">
-    <h2 class="lang-en">About SecuriTecs</h2>
-    <h2 class="lang-ar">من نحن</h2>
-
-    <p class="lang-en">
-      SecuriTecs provides advanced security solutions for banking and commercial sectors.
-    </p>
-
-    <p class="lang-ar">
-      تقدم SecuriTecs حلولاً متقدمة للأمن في القطاعات المصرفية والتجارية.
-    </p>
-  </div>
-
-  <div class="card">
-    <p class="lang-en">
-      Our expertise includes anti-forgery, payment systems, smart cards and secure documents.
-    </p>
-
-    <p class="lang-ar">
-      تشمل خبراتنا مكافحة التزوير وأنظمة الدفع والبطاقات الذكية والوثائق الآمنة.
-    </p>
-  </div>
-</section>
-
-<!-- MIDDLE BANNER -->
-<section class="middle-banner"></section>
-
-<!-- SERVICES -->
-<section class="section" id="services">
-  <div class="section-head">
-    <h2 class="lang-en">Our Services</h2>
-    <h2 class="lang-ar">خدماتنا</h2>
-  </div>
-
-  <div class="grid">
-
-    <div class="card">
-      <img src="payment.jpg" alt="Payment Technologies">
-      <h3>Payment Technologies</h3>
+  <header>
+    <div class="logo fade-up fade-delay-1">
+      <a href="#home">
+        <img src="logo.png" alt="SecuriTecs Logo" />
+      </a>
     </div>
 
-    <div class="card">
-      <img src="anti-forgery.jpg" alt="Anti Forgery">
-      <h3>Anti-Forgery</h3>
+    <div class="header-right fade-up fade-delay-2">
+      <nav>
+        <a href="#home">
+          <span class="inline-en">Home</span>
+          <span class="inline-ar">الرئيسية</span>
+        </a>
+        <a href="#about">
+          <span class="inline-en">About</span>
+          <span class="inline-ar">من نحن</span>
+        </a>
+        <a href="#services">
+          <span class="inline-en">Services</span>
+          <span class="inline-ar">الخدمات</span>
+        </a>
+        <a href="#products">
+          <span class="inline-en">Products</span>
+          <span class="inline-ar">المنتجات</span>
+        </a>
+        <a href="#contact">
+          <span class="inline-en">Contact</span>
+          <span class="inline-ar">تواصل</span>
+        </a>
+      </nav>
+
+      <div class="lang-switch">
+        <button onclick="setLanguage('en')">EN</button>
+        <button onclick="setLanguage('ar')">AR</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-banner fade-up" id="home"></section>
+
+  <section class="middle-banner fade-up fade-delay-1">
+    <img src="banner.png" alt="SecuriTecs Banner" />
+  </section>
+
+  <section class="section" id="about">
+    <div class="section-head fade-up fade-delay-1">
+      <h2 class="lang-en">About SecuriTecs</h2>
+      <h2 class="lang-ar">من نحن</h2>
+
+      <p class="lang-en">
+        SecuriTecs provides advanced security technology solutions for banking,
+        financial, and commercial sectors, with a focus on protection,
+        compliance, and trust across critical digital environments.
+      </p>
+
+      <p class="lang-ar">
+        تقدم SecuriTecs حلولًا متقدمة في تقنيات الأمن للقطاعات المصرفية والمالية
+        والتجارية، مع تركيز على الحماية والامتثال والثقة في البيئات الرقمية الحساسة.
+      </p>
     </div>
 
-    <div class="card">
-      <img src="system-security.jpg" alt="System Security">
-      <h3>System Security</h3>
+    <div class="about-box fade-up fade-delay-2">
+      <p class="lang-en">
+        Our expertise includes system security, anti-forgery solutions, payment
+        technologies, secure labels, smart cards, and protected document
+        environments. We help organizations strengthen trust, improve protection,
+        and support secure digital operations.
+      </p>
+
+      <p class="lang-ar">
+        تشمل خبراتنا أمن الأنظمة، وحلول مكافحة التزوير، وتقنيات الدفع،
+        والملصقات الأمنية، والبطاقات الذكية، وبيئات الوثائق المحمية. نحن نساعد
+        المؤسسات على تعزيز الثقة ورفع مستوى الحماية ودعم العمليات الرقمية الآمنة.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="section-head fade-up fade-delay-1">
+      <h2 class="lang-en">Our Services</h2>
+      <h2 class="lang-ar">خدماتنا</h2>
+
+      <p class="lang-en">
+        Specialized services tailored to protect systems, payments, documents,
+        and operational environments.
+      </p>
+
+      <p class="lang-ar">
+        خدمات متخصصة مصممة لحماية الأنظمة والمدفوعات والوثائق وبيئات التشغيل.
+      </p>
     </div>
 
-  </div>
-</section>
+    <div class="grid">
+      <div class="card fade-up fade-delay-1">
+        <img src="service3.jpg" alt="Payment Technologies" />
+        <h3 class="lang-en">Payment Technologies</h3>
+        <h3 class="lang-ar">تقنيات الدفع</h3>
 
-<!-- PRODUCTS -->
-<section class="section" id="products">
-  <div class="section-head">
-    <h2 class="lang-en">Our Products</h2>
-    <h2 class="lang-ar">منتجاتنا</h2>
-  </div>
+        <p class="lang-en">
+          Secure payment solutions including smart card workflows,
+          EMV-oriented environments, and protected transaction processes.
+        </p>
 
-  <div class="grid">
+        <p class="lang-ar">
+          حلول دفع آمنة تشمل بيئات البطاقات الذكية وتطبيقات EMV
+          وعمليات معاملات محمية.
+        </p>
+      </div>
 
-    <div class="card">
-      <img src="security-labels.jpg" alt="Security Labels">
-      <h3>Security Labels</h3>
+      <div class="card fade-up fade-delay-2">
+        <img src="product1.jpg" alt="Anti-Forgery & Verification" />
+        <h3 class="lang-en">Anti-Forgery & Verification</h3>
+        <h3 class="lang-ar">مكافحة التزوير والتحقق</h3>
+
+        <p class="lang-en">
+          Advanced verification and anti-counterfeit solutions designed
+          to preserve integrity and strengthen trust.
+        </p>
+
+        <p class="lang-ar">
+          حلول متقدمة للتحقق ومكافحة التقليد، مصممة للحفاظ على السلامة
+          وتعزيز الثقة والموثوقية.
+        </p>
+      </div>
+
+      <div class="card fade-up fade-delay-3">
+        <img src="Cards.png" alt="System Security" />
+        <h3 class="lang-en">System Security</h3>
+        <h3 class="lang-ar">أمن الأنظمة</h3>
+
+        <p class="lang-en">
+          Protection for digital infrastructure, critical workflows,
+          and operational systems across high-security environments.
+        </p>
+
+        <p class="lang-ar">
+          حماية للبنية الرقمية وسير العمل الحرج والأنظمة التشغيلية
+          ضمن البيئات ذات المتطلبات الأمنية العالية.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="section-head fade-up fade-delay-1">
+      <h2 class="lang-en">Our Products</h2>
+      <h2 class="lang-ar">منتجاتنا</h2>
+
+      <p class="lang-en">
+        Distinct product lines built for secure identification,
+        protected labeling, and trusted payment card environments.
+      </p>
+
+      <p class="lang-ar">
+        خطوط منتجات مختلفة للتعريف الآمن، والملصقات المحمية،
+        وبيئات بطاقات الدفع الموثوقة.
+      </p>
     </div>
 
-    <div class="card">
-      <img src="secure-documents.jpg" alt="Secure Documents">
-      <h3>Secure Documents</h3>
+    <div class="grid">
+      <div class="card fade-up fade-delay-1">
+        <img src="security-labels.jpg" alt="Security Labels" />
+        <h3 class="lang-en">Security Labels</h3>
+        <h3 class="lang-ar">ملصقات أمنية</h3>
+
+        <p class="lang-en">
+          Anti-counterfeit holographic labels and secure printing solutions
+          for protected applications.
+        </p>
+
+        <p class="lang-ar">
+          ملصقات هولوغرامية وحلول طباعة آمنة لمكافحة التقليد
+          للتطبيقات الحساسة.
+        </p>
+      </div>
+
+      <div class="card fade-up fade-delay-2">
+        <img src="secure-documents.jpg" alt="Secure Documents" />
+        <h3 class="lang-en">Secure Documents</h3>
+        <h3 class="lang-ar">وثائق آمنة</h3>
+
+        <p class="lang-en">
+          High-security document elements and visual protection techniques
+          for IDs, credentials, and official records.
+        </p>
+
+        <p class="lang-ar">
+          عناصر وثائق عالية الأمان وتقنيات حماية بصرية لبطاقات الهوية
+          والاعتمادات والسجلات الرسمية.
+        </p>
+      </div>
+
+      <div class="card fade-up fade-delay-3">
+        <img src="product2.jpg" alt="Smart Cards" />
+        <h3 class="lang-en">Smart Cards</h3>
+        <h3 class="lang-ar">بطاقات ذكية</h3>
+
+        <p class="lang-en">
+          Advanced card technologies for banking, secure payments,
+          and trusted transaction environments.
+        </p>
+
+        <p class="lang-ar">
+          تقنيات بطاقات متقدمة للقطاع المصرفي والمدفوعات الآمنة
+          وبيئات المعاملات الموثوقة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-head fade-up fade-delay-1">
+      <h2 class="lang-en">Contact Us</h2>
+      <h2 class="lang-ar">تواصل معنا</h2>
+
+      <p class="lang-en">
+        Reach out to SecuriTecs for inquiries, cooperation, and security solution needs.
+      </p>
+
+      <p class="lang-ar">
+        تواصل مع SecuriTecs للاستفسارات والتعاون واحتياجات الحلول الأمنية.
+      </p>
     </div>
 
-    <div class="card">
-      <img src="smart-cards.jpg" alt="Smart Cards">
-      <h3>Smart Cards</h3>
+    <div class="contact-box fade-up fade-delay-2">
+      <div class="contact-list">
+        <div class="contact-item">
+          <strong class="inline-en">Mobile:</strong>
+          <strong class="inline-ar">الموبايل:</strong>
+          +963 936 977 977
+        </div>
+
+        <div class="contact-item">
+          <strong class="inline-en">Phone:</strong>
+          <strong class="inline-ar">الهاتف:</strong>
+          +963 11 373 09 75
+        </div>
+
+        <div class="contact-item">
+          <strong class="inline-en">Email:</strong>
+          <strong class="inline-ar">الإيميل:</strong>
+          info@securitecs.com
+        </div>
+
+        <div class="contact-item">
+          <strong class="inline-en">Location:</strong>
+          <strong class="inline-ar">الموقع:</strong>
+          <span class="inline-en">Damascus, Syria</span>
+          <span class="inline-ar">دمشق، سوريا</span>
+        </div>
+      </div>
     </div>
+  </section>
 
-  </div>
-</section>
+  <footer class="fade-up fade-delay-1">
+    <span class="inline-en">© 2026 SecuriTecs. All Rights Reserved.</span>
+    <span class="inline-ar">© 2026 SecuriTecs. جميع الحقوق محفوظة.</span>
+  </footer>
 
-<!-- CONTACT -->
-<section class="section" id="contact">
-  <div class="section-head">
-    <h2 class="lang-en">Contact Us</h2>
-    <h2 class="lang-ar">تواصل معنا</h2>
-  </div>
+  <script>
+    function setLanguage(lang) {
+      const body = document.body;
 
-  <div class="card">
-    <p><strong>Mobile:</strong> +963 936 977 977</p>
-    <p><strong>Email:</strong> info@securitecs.com</p>
-    <p><strong>Location:</strong> Damascus, Syria</p>
-  </div>
-</section>
+      if (lang === 'ar') {
+        body.classList.remove('en');
+        body.classList.add('ar');
+        document.documentElement.lang = 'ar';
+        document.documentElement.dir = 'rtl';
+      } else {
+        body.classList.remove('ar');
+        body.classList.add('en');
+        document.documentElement.lang = 'en';
+        document.documentElement.dir = 'ltr';
+      }
 
-<footer>
-  <span class="lang-en">© 2026 SecuriTecs</span>
-  <span class="lang-ar">© 2026 جميع الحقوق محفوظة</span>
-</footer>
+      localStorage.setItem('site-language', lang);
+    }
 
-<script>
-function setLanguage(lang){
-  document.body.className = lang;
-}
-</script>
-
+    setLanguage(localStorage.getItem('site-language') || 'en');
+  </script>
 </body>
 </html>
