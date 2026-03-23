@@ -18,7 +18,6 @@
       --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.14);
       --radius: 18px;
-      --radius-sm: 12px;
       --transition: all 0.3s ease;
     }
 
@@ -57,25 +56,19 @@
 
     .fade-up {
       opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 0.9s ease forwards;
+      transform: translateY(24px);
+      animation: fadeUp 0.8s ease forwards;
     }
 
-    .fade-delay-1 { animation-delay: 0.1s; }
-    .fade-delay-2 { animation-delay: 0.25s; }
-    .fade-delay-3 { animation-delay: 0.4s; }
-    .fade-delay-4 { animation-delay: 0.55s; }
+    .fade-delay-1 { animation-delay: 0.08s; }
+    .fade-delay-2 { animation-delay: 0.18s; }
+    .fade-delay-3 { animation-delay: 0.28s; }
 
     @keyframes fadeUp {
       to {
         opacity: 1;
         transform: translateY(0);
       }
-    }
-
-    @keyframes softFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
     }
 
     header {
@@ -168,44 +161,30 @@
       box-shadow: 0 10px 22px rgba(47, 126, 161, 0.28);
     }
 
-    .hero-banner {
-      width: 100%;
-      height: 560px;
-      background:
-        linear-gradient(rgba(12, 24, 34, 0.18), rgba(12, 24, 34, 0.18)),
-        url('hero.jpg') center/cover no-repeat;
-      position: relative;
-    }
-
-    .hero-banner::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(255,255,255,0) 70%, rgba(243,245,248,0.85) 100%);
-      pointer-events: none;
-    }
-
-    .middle-banner {
-      text-align: center;
-      margin: 34px auto 8px;
+    /* Banner directly under header */
+    .top-banner {
       max-width: 1240px;
+      margin: 18px auto 8px;
       padding: 0 28px;
     }
 
-    .middle-banner img {
+    .top-banner img {
       width: 100%;
       height: auto;
       border-radius: 20px;
       box-shadow: var(--shadow-hover);
       border: 1px solid rgba(229,231,235,0.9);
       background: #fff;
-      animation: softFloat 5s ease-in-out infinite;
     }
 
     .section {
       max-width: 1240px;
       margin: auto;
-      padding: 70px 28px;
+      padding: 56px 28px;
+    }
+
+    .section.first-section {
+      padding-top: 32px;
     }
 
     .section-head {
@@ -347,7 +326,7 @@
       color: #d1d5db;
       text-align: center;
       padding: 26px 18px;
-      margin-top: 30px;
+      margin-top: 18px;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
@@ -394,12 +373,12 @@
         justify-content: center;
       }
 
-      .hero-banner {
-        height: 420px;
-      }
-
       .section-head h2 {
         font-size: 36px;
+      }
+
+      .top-banner {
+        margin-top: 14px;
       }
     }
 
@@ -412,16 +391,17 @@
         height: 90px;
       }
 
-      .hero-banner {
-        height: 280px;
-      }
-
       .section {
-        padding: 50px 18px;
+        padding: 46px 18px;
       }
 
-      .middle-banner {
+      .section.first-section {
+        padding-top: 24px;
+      }
+
+      .top-banner {
         padding: 0 18px;
+        margin: 12px auto 4px;
       }
 
       .section-head h2 {
@@ -482,13 +462,11 @@
     </div>
   </header>
 
-  <section class="hero-banner fade-up" id="home"></section>
-
-  <section class="middle-banner fade-up fade-delay-1">
+  <section class="top-banner fade-up" id="home">
     <img src="banner.png" alt="SecuriTecs Banner" />
   </section>
 
-  <section class="section" id="about">
+  <section class="section first-section" id="about">
     <div class="section-head fade-up fade-delay-1">
       <h2 class="lang-en">About SecuriTecs</h2>
       <h2 class="lang-ar">من نحن</h2>
