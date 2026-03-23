@@ -9,7 +9,6 @@
     :root {
       --primary: #2f7ea1;
       --primary-dark: #1f5f7a;
-      --primary-light: #e8f3f8;
       --text: #1f2937;
       --muted: #6b7280;
       --bg: #f3f5f8;
@@ -88,7 +87,7 @@
     }
 
     .logo img {
-      height: 120px;
+      height: 140px;
       transition: transform 0.3s ease;
     }
 
@@ -161,7 +160,6 @@
       box-shadow: 0 10px 22px rgba(47, 126, 161, 0.28);
     }
 
-    /* Banner directly under header */
     .top-banner {
       max-width: 1240px;
       margin: 18px auto 8px;
@@ -305,20 +303,44 @@
       color: var(--muted);
       line-height: 1.8;
       font-size: 17px;
-      padding: 10px 14px;
+      padding: 12px 16px;
       border-radius: 12px;
       background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
       border: 1px solid #edf2f7;
     }
 
-    .contact-item strong {
-      color: var(--text);
-      margin-right: 6px;
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    body.ar .contact-item strong {
-      margin-right: 0;
-      margin-left: 6px;
+    body.ar .contact-line {
+      justify-content: flex-start;
+      text-align: right;
+      direction: rtl;
+    }
+
+    body.en .contact-line {
+      justify-content: flex-start;
+      text-align: left;
+      direction: ltr;
+    }
+
+    .contact-label {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .contact-value {
+      color: var(--muted);
+    }
+
+    .ltr-value {
+      direction: ltr;
+      unicode-bidi: embed;
+      display: inline-block;
     }
 
     footer {
@@ -388,7 +410,7 @@
       }
 
       .logo img {
-        height: 90px;
+        height: 100px;
       }
 
       .section {
@@ -516,18 +538,18 @@
 
     <div class="grid">
       <div class="card fade-up fade-delay-1">
-        <img src="service3.jpg" alt="Payment Technologies" />
-        <h3 class="lang-en">Payment Technologies</h3>
-        <h3 class="lang-ar">تقنيات الدفع</h3>
+        <img src="Cards.png" alt="System Security" />
+        <h3 class="lang-en">System Security</h3>
+        <h3 class="lang-ar">أمن الأنظمة</h3>
 
         <p class="lang-en">
-          Secure payment solutions including smart card workflows,
-          EMV-oriented environments, and protected transaction processes.
+          Protection for digital infrastructure, critical workflows,
+          and operational systems across high-security environments.
         </p>
 
         <p class="lang-ar">
-          حلول دفع آمنة تشمل بيئات البطاقات الذكية وتطبيقات EMV
-          وعمليات معاملات محمية.
+          حماية للبنية الرقمية وسير العمل الحرج والأنظمة التشغيلية
+          ضمن البيئات ذات المتطلبات الأمنية العالية.
         </p>
       </div>
 
@@ -548,18 +570,18 @@
       </div>
 
       <div class="card fade-up fade-delay-3">
-        <img src="Cards.png" alt="System Security" />
-        <h3 class="lang-en">System Security</h3>
-        <h3 class="lang-ar">أمن الأنظمة</h3>
+        <img src="service3.jpg" alt="Payment Technologies" />
+        <h3 class="lang-en">Payment Technologies</h3>
+        <h3 class="lang-ar">تقنيات الدفع</h3>
 
         <p class="lang-en">
-          Protection for digital infrastructure, critical workflows,
-          and operational systems across high-security environments.
+          Secure payment solutions including smart card workflows،
+          EMV-oriented environments, and protected transaction processes.
         </p>
 
         <p class="lang-ar">
-          حماية للبنية الرقمية وسير العمل الحرج والأنظمة التشغيلية
-          ضمن البيئات ذات المتطلبات الأمنية العالية.
+          حلول دفع آمنة تشمل بيئات البطاقات الذكية وتطبيقات EMV
+          وعمليات معاملات محمية.
         </p>
       </div>
     </div>
@@ -583,18 +605,18 @@
 
     <div class="grid">
       <div class="card fade-up fade-delay-1">
-        <img src="security-labels.jpg" alt="Security Labels" />
-        <h3 class="lang-en">Security Labels</h3>
-        <h3 class="lang-ar">ملصقات أمنية</h3>
+        <img src="product2.jpg" alt="Smart Cards" />
+        <h3 class="lang-en">Smart Cards</h3>
+        <h3 class="lang-ar">بطاقات ذكية</h3>
 
         <p class="lang-en">
-          Anti-counterfeit holographic labels and secure printing solutions
-          for protected applications.
+          Advanced card technologies for banking, secure payments,
+          and trusted transaction environments.
         </p>
 
         <p class="lang-ar">
-          ملصقات هولوغرامية وحلول طباعة آمنة لمكافحة التقليد
-          للتطبيقات الحساسة.
+          تقنيات بطاقات متقدمة للقطاع المصرفي والمدفوعات الآمنة
+          وبيئات المعاملات الموثوقة.
         </p>
       </div>
 
@@ -615,18 +637,18 @@
       </div>
 
       <div class="card fade-up fade-delay-3">
-        <img src="product2.jpg" alt="Smart Cards" />
-        <h3 class="lang-en">Smart Cards</h3>
-        <h3 class="lang-ar">بطاقات ذكية</h3>
+        <img src="security-labels.jpg" alt="Security Labels" />
+        <h3 class="lang-en">Security Labels</h3>
+        <h3 class="lang-ar">ملصقات أمنية</h3>
 
         <p class="lang-en">
-          Advanced card technologies for banking, secure payments,
-          and trusted transaction environments.
+          Anti-counterfeit holographic labels and secure printing solutions
+          for protected applications.
         </p>
 
         <p class="lang-ar">
-          تقنيات بطاقات متقدمة للقطاع المصرفي والمدفوعات الآمنة
-          وبيئات المعاملات الموثوقة.
+          ملصقات هولوغرامية وحلول طباعة آمنة لمكافحة التقليد
+          للتطبيقات الحساسة.
         </p>
       </div>
     </div>
@@ -648,30 +670,51 @@
 
     <div class="contact-box fade-up fade-delay-2">
       <div class="contact-list">
+
         <div class="contact-item">
-          <strong class="inline-en">Mobile:</strong>
-          <strong class="inline-ar">الموبايل:</strong>
-          +963 936 977 977
+          <div class="contact-line lang-en">
+            <span class="contact-label">Mobile:</span>
+            <span class="contact-value ltr-value">+963 936 977 977</span>
+          </div>
+          <div class="contact-line lang-ar">
+            <span class="contact-label">الموبايل:</span>
+            <span class="contact-value ltr-value">+963 936 977 977</span>
+          </div>
         </div>
 
         <div class="contact-item">
-          <strong class="inline-en">Phone:</strong>
-          <strong class="inline-ar">الهاتف:</strong>
-          +963 11 373 09 75
+          <div class="contact-line lang-en">
+            <span class="contact-label">Phone:</span>
+            <span class="contact-value ltr-value">+963 11 373 09 75</span>
+          </div>
+          <div class="contact-line lang-ar">
+            <span class="contact-label">الهاتف:</span>
+            <span class="contact-value ltr-value">+963 11 373 09 75</span>
+          </div>
         </div>
 
         <div class="contact-item">
-          <strong class="inline-en">Email:</strong>
-          <strong class="inline-ar">الإيميل:</strong>
-          info@securitecs.com
+          <div class="contact-line lang-en">
+            <span class="contact-label">Email:</span>
+            <span class="contact-value ltr-value">info@securitecs.com</span>
+          </div>
+          <div class="contact-line lang-ar">
+            <span class="contact-label">الإيميل:</span>
+            <span class="contact-value ltr-value">info@securitecs.com</span>
+          </div>
         </div>
 
         <div class="contact-item">
-          <strong class="inline-en">Location:</strong>
-          <strong class="inline-ar">الموقع:</strong>
-          <span class="inline-en">Damascus, Syria</span>
-          <span class="inline-ar">دمشق، سوريا</span>
+          <div class="contact-line lang-en">
+            <span class="contact-label">Location:</span>
+            <span class="contact-value">Damascus, Syria</span>
+          </div>
+          <div class="contact-line lang-ar">
+            <span class="contact-label">الموقع:</span>
+            <span class="contact-value">دمشق، سوريا</span>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
