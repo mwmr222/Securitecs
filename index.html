@@ -20,10 +20,25 @@
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial;background:var(--bg);color:var(--text)}
-body.ar{direction:rtl;font-family:Tahoma}
 
-img{max-width:100%;display:block}
+body{
+  margin:0;
+  font-family:Arial;
+  background:var(--bg);
+  color:var(--text);
+}
+
+body.ar{
+  direction:rtl;
+  font-family:Tahoma;
+}
+
+img{
+  max-width:100%;
+  display:block;
+  margin-left:auto;
+  margin-right:auto; /* CENTER ALL IMAGES */
+}
 
 header{
   background:#fff;
@@ -32,25 +47,49 @@ header{
   justify-content:space-between;
   align-items:center;
   box-shadow:0 2px 12px rgba(0,0,0,0.05);
-  position:sticky;top:0;z-index:1000;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-.logo img{height:110px}
+.logo img{
+  height:120px; /* UPDATED */
+}
 
-nav{display:flex;gap:18px}
-nav a{font-weight:700}
-nav a:hover{color:var(--primary)}
+nav{
+  display:flex;
+  gap:18px;
+}
+
+nav a{
+  font-weight:700;
+}
+
+nav a:hover{
+  color:var(--primary);
+}
 
 .lang-switch button{
   background:var(--primary);
-  color:#fff;border:none;
-  padding:8px 12px;border-radius:8px;
-  cursor:pointer;font-weight:700;
+  color:#fff;
+  border:none;
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:700;
 }
 
 .hero-banner{
   height:560px;
   background:url('hero.jpg') center/cover no-repeat;
+}
+
+/* NEW MIDDLE BANNER */
+.middle-banner{
+  width:100%;
+  height:300px;
+  background:url('banner.png') center/cover no-repeat;
+  margin:40px 0;
 }
 
 .section{
@@ -59,9 +98,19 @@ nav a:hover{color:var(--primary)}
   padding:70px 28px;
 }
 
-.section-head{text-align:center;margin-bottom:30px}
-.section-head h2{color:var(--primary-dark);font-size:38px}
-.section-head p{color:var(--muted)}
+.section-head{
+  text-align:center;
+  margin-bottom:30px;
+}
+
+.section-head h2{
+  color:var(--primary-dark);
+  font-size:38px;
+}
+
+.section-head p{
+  color:var(--muted);
+}
 
 .grid{
   display:grid;
@@ -94,6 +143,17 @@ footer{
 .lang-ar{display:none}
 body.ar .lang-en{display:none}
 body.ar .lang-ar{display:block}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr 1fr}
+}
+
+@media(max-width:600px){
+  .grid{grid-template-columns:1fr}
+  .hero-banner{height:300px}
+  .middle-banner{height:180px}
+}
 </style>
 </head>
 
@@ -101,7 +161,7 @@ body.ar .lang-ar{display:block}
 
 <header>
   <div class="logo">
-    <img src="logo.png" alt="logo">
+    <img src="logo.png" alt="SecuriTecs Logo">
   </div>
 
   <nav>
@@ -123,22 +183,37 @@ body.ar .lang-ar{display:block}
 <!-- ABOUT -->
 <section class="section" id="about">
   <div class="section-head">
-    <h2>About SecuriTecs</h2>
-    <p>Advanced security technology solutions for financial and commercial sectors.</p>
+    <h2 class="lang-en">About SecuriTecs</h2>
+    <h2 class="lang-ar">من نحن</h2>
+
+    <p class="lang-en">
+      SecuriTecs provides advanced security solutions for banking and commercial sectors.
+    </p>
+
+    <p class="lang-ar">
+      تقدم SecuriTecs حلولاً متقدمة للأمن في القطاعات المصرفية والتجارية.
+    </p>
   </div>
 
   <div class="card">
-    <p>
-      Our expertise includes anti-forgery, payment technologies, smart cards,
-      secure documents, and protected systems.
+    <p class="lang-en">
+      Our expertise includes anti-forgery, payment systems, smart cards and secure documents.
+    </p>
+
+    <p class="lang-ar">
+      تشمل خبراتنا مكافحة التزوير وأنظمة الدفع والبطاقات الذكية والوثائق الآمنة.
     </p>
   </div>
 </section>
 
+<!-- MIDDLE BANNER -->
+<section class="middle-banner"></section>
+
 <!-- SERVICES -->
 <section class="section" id="services">
   <div class="section-head">
-    <h2>Our Services</h2>
+    <h2 class="lang-en">Our Services</h2>
+    <h2 class="lang-ar">خدماتنا</h2>
   </div>
 
   <div class="grid">
@@ -146,19 +221,16 @@ body.ar .lang-ar{display:block}
     <div class="card">
       <img src="payment.jpg" alt="Payment Technologies">
       <h3>Payment Technologies</h3>
-      <p>Secure EMV and transaction environments.</p>
     </div>
 
     <div class="card">
       <img src="anti-forgery.jpg" alt="Anti Forgery">
-      <h3>Anti-Forgery & Verification</h3>
-      <p>Advanced anti-counterfeit solutions.</p>
+      <h3>Anti-Forgery</h3>
     </div>
 
     <div class="card">
       <img src="system-security.jpg" alt="System Security">
       <h3>System Security</h3>
-      <p>Protection for critical infrastructure.</p>
     </div>
 
   </div>
@@ -167,7 +239,8 @@ body.ar .lang-ar{display:block}
 <!-- PRODUCTS -->
 <section class="section" id="products">
   <div class="section-head">
-    <h2>Our Products</h2>
+    <h2 class="lang-en">Our Products</h2>
+    <h2 class="lang-ar">منتجاتنا</h2>
   </div>
 
   <div class="grid">
@@ -175,19 +248,16 @@ body.ar .lang-ar{display:block}
     <div class="card">
       <img src="security-labels.jpg" alt="Security Labels">
       <h3>Security Labels</h3>
-      <p>Holographic anti-counterfeit labels.</p>
     </div>
 
     <div class="card">
       <img src="secure-documents.jpg" alt="Secure Documents">
       <h3>Secure Documents</h3>
-      <p>Protected document solutions.</p>
     </div>
 
     <div class="card">
       <img src="smart-cards.jpg" alt="Smart Cards">
       <h3>Smart Cards</h3>
-      <p>Advanced secure card technologies.</p>
     </div>
 
   </div>
@@ -196,7 +266,8 @@ body.ar .lang-ar{display:block}
 <!-- CONTACT -->
 <section class="section" id="contact">
   <div class="section-head">
-    <h2>Contact</h2>
+    <h2 class="lang-en">Contact Us</h2>
+    <h2 class="lang-ar">تواصل معنا</h2>
   </div>
 
   <div class="card">
@@ -207,7 +278,8 @@ body.ar .lang-ar{display:block}
 </section>
 
 <footer>
-  © 2026 SecuriTecs
+  <span class="lang-en">© 2026 SecuriTecs</span>
+  <span class="lang-ar">© 2026 جميع الحقوق محفوظة</span>
 </footer>
 
 <script>
